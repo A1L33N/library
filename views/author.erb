@@ -1,0 +1,10 @@
+<h1> <%= @author.name %> Details</h1>
+
+
+<form action="/authors/<%= @author.id() %>" method="post">
+  <input name="_method" type="hidden" value="delete">
+
+  <button type="submit">Delete author</button>
+</form>
+
+<a href="/authors">Return to author list</a>

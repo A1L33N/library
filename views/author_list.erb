@@ -1,0 +1,24 @@
+<h1>Here are all the authors of the books we have:</h1>
+
+
+
+
+  <% if @all_authors.any? %>
+  <ul>
+    <% @all_authors.each() do |author| %>
+      <li><a href='/authors/<%=author.id%>'><%= author.name %></a></li>
+    <% end %>
+  </ul>
+  <% else %>
+    <h3>We have no authors!</h3>
+  <% end %>
+
+
+<form action="/authors" method="post">
+
+  <input type="text" name="new_author" placeholder="Enter author">
+  <button>Add Author</button>
+
+</form>
+
+<a href="/">Back to Library Home</a>

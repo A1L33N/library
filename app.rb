@@ -62,3 +62,29 @@ delete('/patrons/:id') do
   @all_patrons = Patron.all
   erb(:patron_list)
 end
+
+get('/authors') do
+  @all_authors = Author.all
+  erb(:author_list)
+end
+
+post('/authors') do
+  new_author = Author.new({:id => nil, :name => params.fetch('new_author')})
+  new_author.save
+  @all_authors = Author.all
+  erb(:author_list)
+end
+
+get('/authors/:id') do
+  id = params.fetch('id').to_i
+  @author = Author.find(id)
+  erb(:author)
+end
+
+
+delete('/authors/:id') do
+  author = Author.find(params.fetch('id').to_i)
+  author.delete
+  @all_authors = Author.all
+  erb(:author_list)
+end
