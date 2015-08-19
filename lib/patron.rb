@@ -36,4 +36,11 @@ class Patron
     found_patron
   end
 
+  define_method(:delete) do
+    DB.exec("DELETE FROM patrons WHERE id = #{self.id()}")
+  end
+
+  define_singleton_method(:clear) do
+    DB.exec("DELETE FROM patrons *")
+  end
 end
