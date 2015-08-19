@@ -80,8 +80,4 @@ describe(Book) do
       expect(Book.all).to(eq([]))
     end
   end
-
-
-
-
 end
