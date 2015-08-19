@@ -21,3 +21,21 @@ describe("the add book path", {:type => :feature})  do
     expect(page).to have_content('The Boxcar Children')
   end
 end
+
+describe("the add patron path", {:type => :feature})  do
+  it('allows a user to add a patron and see the new list of patrons') do
+    visit('/patrons')
+    fill_in('patron_name', :with => 'Boxcar Child')
+    click_button('Join our library')
+    expect(page).to have_content('Boxcar Child')
+  end
+end
+
+describe("the add book path", {:type => :feature})  do
+  it('allows a user to add a book and see the new list of books') do
+    visit('/authors')
+    fill_in('new_author', :with => 'Boxcar Rick')
+    click_button('Add Author')
+    expect(page).to have_content('Boxcar Rick')
+  end
+end
