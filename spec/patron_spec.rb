@@ -30,17 +30,17 @@ describe(Patron) do
     end
   end
 
-  # describe('.find') do
-  #   it('locates a given instance of the book class by ID') do
-  #     book1 = Book.new({:id => nil, :title => 'Ready Player One'})
-  #     book1.save
-  #     book2 = Book.new({:id => nil, :title => 'Chasing the Scream'})
-  #     book2.save
-  #     book3 = Book.new({:id => nil, :title => 'Eat, Pray, Love'})
-  #     book3.save
-  #     expect(Book.find(book2.id())).to(eq(book2))
-  #   end
-  # end
+  describe('.find') do
+    it('locates a given instance of a patron class by ID') do
+      patron1 = Patron.new({:id => nil, :name => 'Arya Stark'})
+      patron1.save
+      patron2 = Patron.new({:id => nil, :name => 'Rob Stark'})
+      patron2.save
+      patron3 = Patron.new({:id => nil, :name => 'Bran Stark'})
+      patron3.save
+      expect(Patron.find(patron2.id())).to(eq(patron2))
+    end
+  end
   #
   # describe('#delete') do
   #   it('deletes a specific instance of the Book class') do

@@ -26,4 +26,14 @@ class Patron
     self.name == another_patron.name && self.id == another_patron.id
   end
 
+  define_singleton_method(:find) do |id_number|
+    found_patron = nil
+    Patron.all.each() do |patron|
+      if patron.id == id_number
+        found_patron = patron
+      end
+    end
+    found_patron
+  end
+
 end
