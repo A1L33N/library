@@ -14,22 +14,24 @@ describe(Author) do
       expect(Author.all).to(eq([]))
     end
   end
-  #
-  # describe("#save") do
-  #   it("will save a patron to the patrons DB") do
-  #     patron1 = Patron.new({:id => nil, :name => 'Arya Stark'})
-  #     patron1.save
-  #     expect(Patron.all()).to(eq([patron1]))
-  #   end
-  # end
-  #
-  # describe('#==') do
-  #   it("will compare items the way we want") do
-  #     patron1 = Patron.new({:id => nil, :name => 'Arya Stark'})
-  #     patron1.save
-  #     expect(Patron.all()).to(eq([patron1]))
-  #   end
-  # end
+
+  describe("#save") do
+    it("will save an author to the patrons DB") do
+      author1 = Author.new({:id => nil, :name => 'Tyrion Lannister'})
+      author1.save
+      author2 = Author.new({:id => nil, :name => 'Cersei Lannister'})
+      author2.save
+      expect(Author.all()).to(eq([author1, author2]))
+    end
+  end
+
+  describe('#==') do
+    it("will compare items the way we want") do
+      author1 = Author.new({:id => nil, :name => 'Arya Stark'})
+      author1.save
+      expect(Author.all()).to(eq([author1]))
+    end
+  end
   #
   # describe('.find') do
   #   it('locates a given instance of a patron class by ID') do
