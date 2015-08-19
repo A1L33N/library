@@ -40,15 +40,9 @@ class Book
     DB.exec("DELETE FROM books WHERE id = #{self.id}")
   end
 
-
-
-
-
-
-
-
-
-
+  define_singleton_method(:clear) do
+    DB.exec("DELETE FROM books *;")
+  end
 
 
 

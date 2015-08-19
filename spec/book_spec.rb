@@ -65,4 +65,21 @@ describe(Book) do
       expect(Book.all()).to(eq([book1, book2]))
     end
   end
+
+  describe(".clear") do
+    it('clears all the saved books') do
+      book1 = Book.new({:id => nil, :title => 'Ready Player One'})
+      book1.save
+      book2 = Book.new({:id => nil, :title => 'Chasing the Scream'})
+      book2.save
+      book3 = Book.new({:id => nil, :title => 'Eat, Pray, Love'})
+      book3.save
+      Book.clear
+      expect(Book.all).to(eq([]))
+    end
+  end
+
+
+
+
 end
