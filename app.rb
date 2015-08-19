@@ -27,3 +27,9 @@ get('/books/:id') do
   @book = Book.find(book_id)
   erb(:book)
 end
+
+delete('/books/:id') do
+  @book = Book.find(params.fetch('id').to_i)
+  @book.delete()
+  erb(:book_list)
+end
