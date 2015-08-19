@@ -31,8 +31,8 @@ describe("the add patron path", {:type => :feature})  do
   end
 end
 
-describe("the add book path", {:type => :feature})  do
-  it('allows a user to add a book and see the new list of books') do
+describe("the add author path", {:type => :feature})  do
+  it('allows a user to add an author and see the new list of authors') do
     visit('/authors')
     fill_in('new_author', :with => 'Boxcar Rick')
     click_button('Add Author')
