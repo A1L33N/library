@@ -26,6 +26,27 @@ class Book
     self.title() == another_book.title() && self.id() == another_book.id()
   end
 
+  define_singleton_method(:find) do |id_number|
+    found_book = nil
+    Book.all.each() do |book|
+      if book.id == id_number
+        found_book = book
+      end
+    end
+    found_book
+  end
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 end

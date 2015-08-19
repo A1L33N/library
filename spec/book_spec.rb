@@ -40,4 +40,19 @@ describe(Book) do
       expect(Book.all).to(eq([book1]))
     end
   end
+
+  describe('.find') do
+    it('locates a given instance of the book class by ID') do
+      book1 = Book.new({:id => nil, :title => 'Ready Player One'})
+      book1.save
+      book2 = Book.new({:id => nil, :title => 'Chasing the Scream'})
+      book2.save
+      book3 = Book.new({:id => nil, :title => 'Eat, Pray, Love'})
+      book3.save
+      expect(Book.find(book2.id())).to(eq(book2))
+    end
+  end
+
+  # describe('#delete') do
+  # end
 end
