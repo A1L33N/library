@@ -1,0 +1,10 @@
+<h1><%= @patron.name %> Library History</h1>
+
+
+<form action="/patrons/<%= @patron.id() %>" method="post">
+  <input name="_method" type="hidden" value="delete">
+
+  <button type="submit">Delete Patron</button>
+</form>
+
+<a href="/patron_list">Return to Patron List</a>

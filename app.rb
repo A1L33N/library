@@ -35,6 +35,7 @@ end
 delete('/books/:id') do
   @book = Book.find(params.fetch('id').to_i)
   @book.delete()
+  @all_books = Book.all
   erb(:book_list)
 end
 
@@ -46,6 +47,18 @@ end
 post('/patrons') do
   new_patron = Patron.new(:id => nil, :name => params.fetch('patron_name'))
   new_patron.save
+  @all_patrons = Patron.all
+  erb(:patron_list)
+end
+
+get('/patrons/:id') do
+  @patron = Patron.find(params.fetch('id').to_i)
+  erb(:patron)
+end
+
+delete('/patrons/:id') do
+  patron = Patron.find(params.fetch('id').to_i)
+  patron.delete
   @all_patrons = Patron.all
   erb(:patron_list)
 end

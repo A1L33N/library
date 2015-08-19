@@ -4,7 +4,7 @@
   <% if @all_patrons.any?() %>
     <ul>
       <% @all_patrons.each() do |patron| %>
-        <li><a href='/patron/<%=patron.id%>'><%= patron.name %></a></li>
+        <li><a href='/patrons/<%=patron.id%>'><%= patron.name %></a></li>
       <% end %>
     </ul>
 
