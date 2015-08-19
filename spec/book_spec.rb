@@ -1,15 +1,17 @@
-require('rspec')
-require('pry')
-require('book')
-require('pg')
+# require('rspec')
+# require('pry')
+# require('book')
+# require('pg')
+#
+# DB = PG.connect({:dbname => 'library_test'})
+#
+# RSpec.configure do |config|
+#   config.after(:each) do
+#     DB.exec("DELETE FROM books *;")
+#   end
+# end
 
-DB = PG.connect({:dbname => 'library_test'})
-
-RSpec.configure do |config|
-  config.after(:each) do
-    DB.exec("DELETE FROM books *;")
-  end
-end
+require('spec_helper')
 
 describe(Book) do
   describe("#title") do
