@@ -25,4 +25,19 @@ describe(Book) do
     end
   end
 
+  describe("#save") do
+    it("will save a book to the book DB") do
+      book1 = Book.new({:id => nil, :title => 'Ready Player One'})
+      book1.save
+      expect(Book.all).to(eq([book1]))
+    end
+  end
+
+  describe('#==') do
+    it("will compare items the way we want") do
+      book1 = Book.new({:id => nil, :title => 'Ready Player One'})
+      book1.save
+      expect(Book.all).to(eq([book1]))
+    end
+  end
 end
