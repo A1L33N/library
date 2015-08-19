@@ -56,7 +56,7 @@ describe(Patron) do
   end
 
   describe(".clear") do
-    it('clears all the saved books') do
+    it('clears all the saved patrons') do
       patron1 = Patron.new({:id => nil, :name => 'Arya Stark'})
       patron1.save
       patron2 = Patron.new({:id => nil, :name => 'Rob Stark'})
