@@ -9,11 +9,11 @@ describe(Author) do
     end
   end
 
-  # describe(".all") do
-  #   it("will return an empty array at first") do
-  #     expect(Patron.all).to(eq([]))
-  #   end
-  # end
+  describe(".all") do
+    it("will return an empty array at first") do
+      expect(Author.all).to(eq([]))
+    end
+  end
   #
   # describe("#save") do
   #   it("will save a patron to the patrons DB") do
