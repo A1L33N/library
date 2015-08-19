@@ -36,6 +36,9 @@ class Book
     found_book
   end
 
+  define_method(:delete) do
+    DB.exec("DELETE FROM books WHERE id = #{self.id}")
+  end
 
 
 

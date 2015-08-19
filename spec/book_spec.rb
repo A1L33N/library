@@ -53,6 +53,16 @@ describe(Book) do
     end
   end
 
-  # describe('#delete') do
-  # end
+  describe('#delete') do
+    it('deletes a specific instance of the Book class') do
+      book1 = Book.new({:id => nil, :title => 'Ready Player One'})
+      book1.save
+      book2 = Book.new({:id => nil, :title => 'Chasing the Scream'})
+      book2.save
+      book3 = Book.new({:id => nil, :title => 'Eat, Pray, Love'})
+      book3.save
+      book3.delete()
+      expect(Book.all()).to(eq([book1, book2]))
+    end
+  end
 end
