@@ -58,16 +58,16 @@ describe(Author) do
     end
   end
 
-  # describe(".clear") do
-  #   it('clears all the saved patrons') do
-  #     patron1 = Patron.new({:id => nil, :name => 'Arya Stark'})
-  #     patron1.save
-  #     patron2 = Patron.new({:id => nil, :name => 'Rob Stark'})
-  #     patron2.save
-  #     patron3 = Patron.new({:id => nil, :name => 'Bran Stark'})
-  #     patron3.save
-  #     Patron.clear
-  #     expect(Patron.all()).to(eq([]))
-  #   end
-  # end
+  describe(".clear") do
+    it('clears all the saved authors') do
+      author1 = Author.new({:id => nil, :name => 'Tyrion Lannister'})
+      author1.save
+      author2 = Author.new({:id => nil, :name => 'Cersei Lannister'})
+      author2.save
+      author3 = Author.new({:id => nil, :name => 'Jamie Lannister'})
+      author3.save
+      Author.clear
+      expect(Author.all()).to(eq([]))
+    end
+  end
 end

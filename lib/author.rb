@@ -38,6 +38,10 @@ class Author
   end
 
   define_method(:delete) do
-    DB.exec("DELETE FROM authors WHERE id = #{self.id}")
+    DB.exec("DELETE FROM authors WHERE id = #{self.id};")
+  end
+
+  define_singleton_method(:clear) do
+    DB.exec("DELETE FROM authors *;")
   end
 end
