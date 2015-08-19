@@ -1,8 +1,8 @@
 <h1>Here are the books we have:</h1>
 
-  <% if Book.all.any? %>
+  <% if @all_books.any? %>
   <ul>
-    <% Book.all.each() do |book| %>
+    <% @all_books.each() do |book| %>
       <li><a href='/books/<%=book.id%>'><%= book.title %></a></li>
     <% end %>
   </ul>

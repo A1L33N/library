@@ -1,0 +1,19 @@
+<h1>Here are the library's patrons!</h1>
+
+
+  <% if @all_patrons.any?() %>
+    <ul>
+      <% @all_patrons.each() do |patron| %>
+        <li><a href='/patron/<%=patron.id%>'><%= patron.name %></a></li>
+      <% end %>
+    </ul>
+
+    <% else %>
+      <h3>No one has joined this library yet</h3>
+  <% end %>
+
+
+<form action="/patrons" method="post">
+  <input type="text" name="patron_name" placeholder="Enter your name">
+  <button>Join our library</button>
+</form>
