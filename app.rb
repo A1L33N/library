@@ -20,6 +20,10 @@ post('/books') do
   new_book = Book.new(:id => nil, :title => params.fetch('new_book'))
   new_book.save
   erb(:book_list)
+end
 
-
+get('/books/:id') do
+  book_id= params.fetch('id').to_i
+  @book = Book.find(book_id)
+  erb(:book)
 end
