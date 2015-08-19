@@ -14,22 +14,22 @@ describe(Patron) do
     end
   end
 
-  # describe("#save") do
-  #   it("will save a book to the book DB") do
-  #     book1 = Book.new({:id => nil, :title => 'Ready Player One'})
-  #     book1.save
-  #     expect(Book.all).to(eq([book1]))
-  #   end
-  # end
-  #
-  # describe('#==') do
-  #   it("will compare items the way we want") do
-  #     book1 = Book.new({:id => nil, :title => 'Ready Player One'})
-  #     book1.save
-  #     expect(Book.all).to(eq([book1]))
-  #   end
-  # end
-  #
+  describe("#save") do
+    it("will save a patron to the patrons DB") do
+      patron1 = Patron.new({:id => nil, :name => 'Arya Stark'})
+      patron1.save
+      expect(Patron.all()).to(eq([patron1]))
+    end
+  end
+
+  describe('#==') do
+    it("will compare items the way we want") do
+      patron1 = Patron.new({:id => nil, :name => 'Arya Stark'})
+      patron1.save
+      expect(Patron.all()).to(eq([patron1]))
+    end
+  end
+
   # describe('.find') do
   #   it('locates a given instance of the book class by ID') do
   #     book1 = Book.new({:id => nil, :title => 'Ready Player One'})
