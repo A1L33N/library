@@ -27,4 +27,17 @@ class Author
     self.name == another_author.name && self.id == another_author.id
   end
 
+  define_singleton_method(:find) do |id|
+    found_author = nil
+    Author.all().each() do |author|
+      if author.id == id
+        found_author = author
+      end
+    end
+    found_author
+  end
+
+  define_method(:delete) do
+    DB.exec("DELETE FROM authors WHERE id = #{self.id}")
+  end
 end

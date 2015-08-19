@@ -32,32 +32,32 @@ describe(Author) do
       expect(Author.all()).to(eq([author1]))
     end
   end
-  #
-  # describe('.find') do
-  #   it('locates a given instance of a patron class by ID') do
-  #     patron1 = Patron.new({:id => nil, :name => 'Arya Stark'})
-  #     patron1.save
-  #     patron2 = Patron.new({:id => nil, :name => 'Rob Stark'})
-  #     patron2.save
-  #     patron3 = Patron.new({:id => nil, :name => 'Bran Stark'})
-  #     patron3.save
-  #     expect(Patron.find(patron2.id())).to(eq(patron2))
-  #   end
-  # end
-  #
-  # describe('#delete') do
-  #   it('deletes a specific instance of the Patron class') do
-  #     patron1 = Patron.new({:id => nil, :name => 'Arya Stark'})
-  #     patron1.save
-  #     patron2 = Patron.new({:id => nil, :name => 'Rob Stark'})
-  #     patron2.save
-  #     patron3 = Patron.new({:id => nil, :name => 'Bran Stark'})
-  #     patron3.save
-  #     patron3.delete()
-  #     expect(Patron.all()).to(eq([patron1, patron2]))
-  #   end
-  # end
-  #
+
+  describe('.find') do
+    it('locates a given instance of a author class by ID') do
+      author1 = Author.new({:id => nil, :name => 'Tyrion Lannister'})
+      author1.save
+      author2 = Author.new({:id => nil, :name => 'Cersei Lannister'})
+      author2.save
+      author3 = Author.new({:id => nil, :name => 'Jamie Lannister'})
+      author3.save
+      expect(Author.find(author2.id())).to(eq(author2))
+    end
+  end
+
+  describe('#delete') do
+    it('deletes a specific instance of the Author class') do
+      author1 = Author.new({:id => nil, :name => 'Tyrion Lannister'})
+      author1.save
+      author2 = Author.new({:id => nil, :name => 'Cersei Lannister'})
+      author2.save
+      author3 = Author.new({:id => nil, :name => 'Jamie Lannister'})
+      author3.save
+      author3.delete()
+      expect(Author.all()).to(eq([author1, author2]))
+    end
+  end
+
   # describe(".clear") do
   #   it('clears all the saved patrons') do
   #     patron1 = Patron.new({:id => nil, :name => 'Arya Stark'})
