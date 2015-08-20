@@ -19,7 +19,7 @@ get('/books') do
 end
 
 post('/books') do
-  new_book = Book.new(:id => nil, :title => params.fetch('new_book'))
+  new_book = Book.new({:id => nil, :title => params.fetch('new_book')})
   new_book.save
   @all_books = Book.all
 
@@ -45,7 +45,7 @@ get('/patrons') do
 end
 
 post('/patrons') do
-  new_patron = Patron.new(:id => nil, :name => params.fetch('patron_name'))
+  new_patron = Patron.new({:id => nil, :name => params.fetch('patron_name')})
   new_patron.save
   @all_patrons = Patron.all
   erb(:patron_list)
