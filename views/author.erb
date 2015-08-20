@@ -1,8 +1,5 @@
 <h1> <%= @author.name %> Details</h1>
 
-<h3>Select all the books the author has written:</h3>
-
-
 <% if @author.books().any?() %>
 
   <h3>Here are all the books this author has written:</h3>
@@ -15,9 +12,7 @@
 
 <% end %>
 
-
-
-
+<h4>Add other books the author has written:</h4>
 
 <% if @books.any?() %>
   <form action="/authors/<%= @author.id %>" method="post">

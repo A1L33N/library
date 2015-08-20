@@ -1,39 +1,18 @@
 <h1>Here are the books we have:</h1>
 
-  <% if @all_books.any? %>
-  <ul>
-    <% @all_books.each() do |book| %>
-      <li><a href='/books/<%=book.id%>'><%= book.title %></a></li>
-    <% end %>
-  </ul>
-  <% else %>
-    <h3>We have no books!</h3>
+<% if @all_books.any? %>
+<ul>
+  <% @all_books.each() do |book| %>
+    <li><a href='/books/<%=book.id%>'><%= book.title %></a></li>
   <% end %>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</ul>
+<% else %>
+  <h3>We have no books!</h3>
+<% end %>
 
 <form action="/books" method="post">
-
   <input type="text" name="new_book" placeholder="Enter book title">
   <button name="add_book">Add Book</button>
-
 </form>
-
 
 <a href="/">Return to Home</a>

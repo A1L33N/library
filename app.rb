@@ -34,11 +34,19 @@ get('/books/:id') do
 end
 
 delete('/books/:id') do
-
   @book = Book.find(params.fetch('id').to_i)
   @book.delete()
   @all_books = Book.all
   erb(:book_list)
+end
+
+patch('/books/:id') do
+  book_id = params.fetch('id').to_i
+  @book = Book.find(book_id)
+  author_ids = params.fetch('author_ids')
+  @book.update({:author_ids => author_ids})
+  @authors = Author.all()
+  erb(:book)
 end
 
 get('/patrons') do
@@ -99,5 +107,4 @@ patch("/authors/:id") do
   @author.update({:book_ids => book_ids})
   @books = Book.all
   erb(:author)
-
 end
