@@ -67,4 +67,13 @@ describe(Patron) do
       expect(Patron.all()).to(eq([]))
     end
   end
+
+  describe('#update') do
+    it('updates a given instance of the Patron class') do
+      patron1 = Patron.new({:id => nil, :name => 'Arya Stark'})
+      patron1.save
+      patron1.update({:name => "Paul Blart"})
+      expect(patron1.name()).to(eq("Paul Blart"))
+    end
+  end
 end

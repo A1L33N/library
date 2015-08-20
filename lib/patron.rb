@@ -43,4 +43,10 @@ class Patron
   define_singleton_method(:clear) do
     DB.exec("DELETE FROM patrons *")
   end
+
+  define_method(:update) do |attributes|
+    @name = attributes.fetch(:name, @name)
+    @id = self.id()
+    DB.exec("UPDATE patrons SET name = '#{@name}' WHERE id = #{@id}" )
+  end
 end
