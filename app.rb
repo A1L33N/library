@@ -7,7 +7,7 @@ require("./lib/book")
 require('pg')
 require('pry')
 
-DB = PG.connect({:dbname => "library"})
+DB = PG.connect({:dbname => "library_test"})
 
 get('/') do
   erb(:index)
@@ -27,12 +27,14 @@ post('/books') do
 end
 
 get('/books/:id') do
+  @authors = Author.all
   book_id= params.fetch('id').to_i
   @book = Book.find(book_id)
   erb(:book)
 end
 
 delete('/books/:id') do
+
   @book = Book.find(params.fetch('id').to_i)
   @book.delete()
   @all_books = Book.all
@@ -76,6 +78,7 @@ post('/authors') do
 end
 
 get('/authors/:id') do
+  @books = Book.all
   id = params.fetch('id').to_i
   @author = Author.find(id)
   erb(:author)
@@ -87,4 +90,14 @@ delete('/authors/:id') do
   author.delete
   @all_authors = Author.all
   erb(:author_list)
+end
+
+patch("/authors/:id") do
+  author = params.fetch('id').to_i
+  @author = Author.find(author)
+  book_ids = params.fetch("book_ids")
+  @author.update({:book_ids => book_ids})
+  @books = Book.all
+  erb(:author)
+
 end
