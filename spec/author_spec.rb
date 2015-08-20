@@ -70,4 +70,13 @@ describe(Author) do
       expect(Author.all()).to(eq([]))
     end
   end
+
+  describe('#update') do
+    it('updates a given instance of the Author class') do
+      author1 = Author.new({:id => nil, :name => 'Tyrion Lannister'})
+      author1.save
+      author1.update({:name => "Catlin Stark"})
+      expect(author1.name()).to(eq("Catlin Stark"))
+    end
+  end
 end

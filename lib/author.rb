@@ -44,4 +44,10 @@ class Author
   define_singleton_method(:clear) do
     DB.exec("DELETE FROM authors *;")
   end
+
+  define_method(:update) do |attributes|
+    @name = attributes.fetch(:name, @name)
+    @id = self.id()
+    DB.exec("UPDATE authors SET name = '#{@name}' WHERE id = #{@id}" )
+  end
 end
