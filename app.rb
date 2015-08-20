@@ -19,7 +19,7 @@ get('/books') do
 end
 
 post('/books') do
-  new_book = Book.new({:id => nil, :title => params.fetch('new_book')})
+  new_book = Book.new({:id => nil, :title => params.fetch("new_book")})
   new_book.save
   @all_books = Book.all
 
@@ -107,4 +107,20 @@ patch("/authors/:id") do
   @author.update({:book_ids => book_ids})
   @books = Book.all
   erb(:author)
+end
+
+post('/checkouts') do
+  @patrons = Patron.all
+  book_id = params.fetch("book_id").to_i
+  book = Book.find(book_id)
+  patron_id = params.fetch('patron_id').to_i
+  book.checkout(patron_id)
+  erb(:checkout_list)
+
+get('/checkouts') do
+  
+
+end
+
+
 end
