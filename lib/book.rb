@@ -66,4 +66,19 @@ class Book
     end
     book_authors
   end
+
+  define_method(:checkout) do |patron_id|
+    due_date = Date.today.next_day(14).to_s
+    DB.exec("INSERT INTO checkouts (book_id, patron_id, due_date) VALUES (#{self.id}, #{patron_id}, '#{due_date}');")
+  end
+
+  define_method(:due_date) do
+    results = DB.exec("SELECT * FROM checkouts WHERE book_id = #{self.id}")
+    returned_checkouts = []
+    results.each() do |checkout|
+      returned_checkouts.push(checkout)
+    end
+    due_date = returned_checkouts.last.fetch('due_date')
+  end
+
 end

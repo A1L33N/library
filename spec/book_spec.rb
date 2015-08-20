@@ -128,4 +128,18 @@ describe(Book) do
       expect(book1.authors()).to eq([author1, author2])
     end
   end
+
+  describe("checkout") do
+    it('saves a book to the checkout table') do
+      book1 = Book.new({:id => nil, :title => 'Ready Player One'})
+      book1.save
+      patron1 = Patron.new({:id => nil, :name => 'Arya Stark'})
+      patron1.save
+      book1.checkout(patron1.id)
+      expect(book1.due_date).to eq(Date.today().next_day(14).to_s)
+
+    end
+  end
+
+
 end
