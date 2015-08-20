@@ -56,6 +56,21 @@ describe(Author) do
       author3.delete()
       expect(Author.all()).to(eq([author1, author2]))
     end
+# The below spec test was an additional test to make sure the join table was emptied of
+# a specific author. This also stores a DB request for comparison against another after the deletion.
+    it('deletes a specific instance of the Author class that also has a book') do
+      author1 = Author.new({:id => nil, :name => 'George RR Martin'})
+      author1.save
+      author_id = author1.id()
+      book1 = Book.new({:id => nil, :title => 'Game of Thrones'})
+      book1.save
+      book2 = Book.new({:id => nil, :title => 'The Winds of Winter'})
+      book2.save
+      author1.update({:book_ids => [book1.id(), book2.id()]})
+      comparison = DB.exec("SELECT * FROM authors_books WHERE author_id = #{author_id};")
+      author1.delete()
+      expect(DB.exec("SELECT * FROM authors_books WHERE author_id = #{author_id};")).to_not(eq(comparison))
+    end
   end
 
   describe(".clear") do
