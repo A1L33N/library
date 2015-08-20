@@ -27,6 +27,7 @@ post('/books') do
 end
 
 get('/books/:id') do
+  @patrons = Patron.all
   @authors = Author.all
   book_id= params.fetch('id').to_i
   @book = Book.find(book_id)
@@ -115,12 +116,24 @@ post('/checkouts') do
   book = Book.find(book_id)
   patron_id = params.fetch('patron_id').to_i
   book.checkout(patron_id)
+
+
+  results = DB.exec("SELECT * FROM checkouts;")
+  @checkouts = []
+  results.each() do |checkout|
+    checkout_item =[]
+    book_id = params.fetch('book_id').to_i
+    book_title = Book.find(book_id).title
+    patron_id = params.fetch('patron_id').to_i
+    patron_name = Patron.find(patron_id)
+    due_date = params.fetch('due_date')
+    checkout_item.push(book_title)
+    checkout_item.push(patron_name)
+    checkout_item.push(due_date)
+
+    @checkouts.push(checkout_item)
+  end
   erb(:checkout_list)
-
-get('/checkouts') do
-  
-
-end
 
 
 end

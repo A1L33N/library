@@ -1,1 +1,7 @@
 <h1>Here are the current titles checkout and their due dates!</h1>
+
+<ul>
+  <% @checkouts.each() do |checkout| %>
+    <li><%= checkout[0] %> - <%= checkout[1] %> - <%=checkout[2] %></li>
+  <% end %>
+</ul>
