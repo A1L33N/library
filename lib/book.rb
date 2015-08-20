@@ -60,11 +60,9 @@ class Book
     results.each() do |result|
       author_id = result.fetch('author_id').to_i
       author = DB.exec("SELECT * FROM authors WHERE id = #{author_id};")
-  # binding.pry
       author_name = author.first.fetch("name")
       book_authors.push(Author.new({:name => author_name, :id => author_id}))
     end
     book_authors
   end
-
 end

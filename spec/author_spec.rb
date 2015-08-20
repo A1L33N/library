@@ -78,5 +78,29 @@ describe(Author) do
       author1.update({:name => "Catlin Stark"})
       expect(author1.name()).to(eq("Catlin Stark"))
     end
+
+    it('allows you to add a book to a author') do
+      author1 = Author.new({:id => nil, :name => 'George RR Martin'})
+      author1.save
+      book1 = Book.new({:id => nil, :title => 'Game of Thrones'})
+      book1.save
+      book2 = Book.new({:id => nil, :title => 'The Winds of Winter'})
+      book2.save
+      author1.update({:book_ids => [book1.id(), book2.id()]})
+      expect(author1.books()).to eq([book1, book2])
+    end
+  end
+
+  describe("#books") do
+    it('returns all the books of one author') do
+      author1 = Author.new({:id => nil, :name => 'George RR Martin'})
+      author1.save
+      book1 = Book.new({:id => nil, :title => 'Game of Thrones'})
+      book1.save
+      book2 = Book.new({:id => nil, :title => 'The Winds of Winter'})
+      book2.save
+      author1.update({:book_ids => [book1.id(), book2.id()]})
+      expect(author1.books()).to eq([book1, book2])
+    end
   end
 end
