@@ -80,4 +80,18 @@ describe(Book) do
       expect(Book.all).to(eq([]))
     end
   end
+
+  describe('#update') do
+    it('allows a user to update the title of a book') do
+      book1 = Book.new({:id => nil, :title => 'Ready Player One'})
+      book1.save
+      book1.update({:title => "Ready Player Two"})
+      expect(book1.title).to eq("Ready Player Two")
+    end
+  end
+
+
+
+
+
 end

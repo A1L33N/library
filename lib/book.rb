@@ -44,6 +44,11 @@ class Book
     DB.exec("DELETE FROM books *;")
   end
 
+  define_method(:update) do |attributes|
+    @title= attributes.fetch(:title, @title)
+    @id = self.id
+    DB.exec("UPDATE books SET title = '#{@name}' WHERE id = #{@id}")
+  end
 
 
 end
